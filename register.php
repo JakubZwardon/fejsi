@@ -2,6 +2,7 @@
 
 require 'config/config.php';
 require 'includes/form_handlers/register_handler.php';
+require 'includes/form_handlers/login_handler.php';
 
 ?>
 
@@ -10,6 +11,23 @@ require 'includes/form_handlers/register_handler.php';
 	<title>fejsi- Registration</title>
 </head>
 <body>
+<!-- login form  -->
+	<form action="register.php" method="post">
+		<input type="email" name="log_email" placeholder="e-mail address" required value="<?php 
+		if (isset($_SESSION['log_email'])) {
+			echo $_SESSION['log_email'];
+		}?>"/>
+		<br />
+		<input type="password" name="log_password" placeholder="password" required/>
+		<br />
+		<input type="submit" name="login_button" value="Login"/>
+		<br />
+		
+<!-- 		displaying error to the user -->
+		<?php if (in_array("e-mail or password was incorrect<br />", $error_arrar)) echo "e-mail or password was incorrect<br />";?>
+	</form>
+
+<!-- register form -->
 	<form action="register.php" method="post">
 <!-- 	input for first name -->
 		<input type="text" name="reg_fname" placeholder="First Name" required value="<?php 
