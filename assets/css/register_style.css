@@ -24,6 +24,12 @@ body{
 	padding: 0;
 }
 
+a {
+	text-decoration: none;
+	color: #39c8ba;
+	font-size: 120%;
+}
+
 .wrapper {
 	background-image: url("../images/backgrounds/desktop.jpg");
 	min-width: 950px;
@@ -67,5 +73,34 @@ body{
 	margin-bottom: 0;
 	color: #4a6eb3;
 	text-shadow: #bfe8ea 0.5px 0.5px 0px;
-	
+}
+
+input[type="submit"] {
+	background-color: #39c8ba;
+	border: 1px solid #39c8ba;
+	border-radius: 3px;
+	margin: 5px 0 10px 0;
+	padding: 5px 10px 5px 10px;
+	color: #fff;
+	text-shadow: #bfe8ea 0.5px 0.5px 0px;
+	font-family: 'Bellota-BoldItalic', sans-serif;
+	font-size: 100%;
+}
+
+input[type="text"], input[type="email"], input[type="password"] {
+	border: 1px solid #cbe3e1;
+	border-radius: 5px;
+	margin-top: 5px;
+	width: 70%;
+	height: 35px;
+	margin-bottom: 10px;
+	padding-left: 5px;
+}
+
+input[type="text"]:hover, input[type="email"]:hover, input[type="password"]:hover {
+	border-color: #39c8ba;
+}
+
+#second {
+	display: none;
 }
