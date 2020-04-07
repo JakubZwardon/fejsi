@@ -17,7 +17,7 @@ body {
     min-width: 1050px;
     height: 40px;
 	background-color: #39c8ba;
-    border-bottom: 0.25em solid #1bbbab;
+    border-bottom: 0.25em solid #7898d5;
     margin: 0 0 10px 0;
     display: inline-flex;
 }
@@ -34,4 +34,25 @@ body {
 
 a:hover {
     text-decoration: none;
+}
+
+nav {
+    float: right;
+    right: 1px;
+    position: absolute;
+    margin: 10px;
+}
+
+nav a{
+    font-family: 'Bellota-BoldItalic', sans-serif;
+    font-weight: bold;
+    position: relative;
+    color: #fff;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+nav a:hover {
+    border-bottom: 7px solid #ff944c;
+    color: #fff;
 }
