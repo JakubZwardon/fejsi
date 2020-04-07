@@ -58,3 +58,6 @@ if (isset($_SESSION['username'])) {
 		</nav>
 
 	</div>
+
+	<!-- this div will be closed in index file -->
+	<div class="wrapper">
