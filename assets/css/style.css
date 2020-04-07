@@ -10,6 +10,7 @@
 
 body {
     line-height: 17px;
+    background-color: #e6eae8;
 }
 
 .top_bar {
@@ -20,6 +21,8 @@ body {
     border-bottom: 0.25em solid #7898d5;
     margin: 0 0 10px 0;
     display: inline-flex;
+    position: fixed;
+    z-index: 10px;
 }
 
 .logo a{
@@ -55,4 +58,28 @@ nav a{
 nav a:hover {
     border-bottom: 7px solid #ff944c;
     color: #fff;
+}
+
+.wrapper {
+    margin: 0 auto;
+    top: 50px;
+    position: relative;
+    padding: 0 10px;
+    width: 75%;
+    min-width: 950px;
+}
+
+.column {
+    background-color: #fff;
+    padding: 10px;    
+    border: 1px solid #d3d3d3;    
+    border-radius: 5px;    
+    box-shadow: 2px 2px 1px #d3d3d3;    
+    z-index: -1;
+}
+
+.user_details {
+    width: 250px;
+    float: left;
+    margin-bottom: 20px;
 }
