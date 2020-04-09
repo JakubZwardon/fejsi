@@ -22,7 +22,7 @@ body {
     margin: 0 0 10px 0;
     display: inline-flex;
     position: fixed;
-    z-index: 10px;
+    z-index: 1;
 }
 
 .logo a{
