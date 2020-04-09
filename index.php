@@ -5,8 +5,8 @@ include("includes/classes/Post.php");
 
 if(isset($_POST['post'])) {
 	$post = new Post($con, $userLoggedIn);
-	$post->submitPost($_POST['post_text'], 'non');
-	header('Location: index.php');
+	$post->submitPost($_POST['post_text'], 'none');
+	header('Location: index.php');  //protect from rewrite dates to database when refresh page
 }
 
 
@@ -38,8 +38,10 @@ if(isset($_POST['post'])) {
 	</form>
 
 	<?php 
-	$user_obj = new User($con, $userLoggedIn);
-	echo $user_obj->getFirstAndLastName();
+	
+	$post = new Post($con, $userLoggedIn);
+	$post->loadPostsFriends();
+	
 	?>
 
 </div>
