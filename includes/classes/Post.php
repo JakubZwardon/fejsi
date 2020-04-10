@@ -91,6 +91,14 @@ class Post {
                     continue;
                 }
 
+                //Create new object for logged in user
+                $userLoggedInObj = new User($this->con, $userLoggedIn);
+                //check if post is from the friend or owner
+                //true proces, false skip this post and go to another without showing it
+                if(!$userLoggedInObj->isFriend($addedBy)) {
+                    continue;
+                }
+
                 //Search place to start load posts
                 if($numIterations++ < $start) {
                     continue;
@@ -108,6 +116,21 @@ class Post {
                 $firstName = $user_row['first_name'];
                 $lastName = $user_row['last_name'];
                 $profilePic = $user_row['profile_pic'];
+
+                ?>
+
+                <script>
+                    function toggle<?php echo $id; ?>() {
+                        let element = document.getElementById("toggle_comment<?php echo$id; ?>");
+
+                        if (element.style.display == "block")
+                            element.style.display = "none";
+                        else
+                            element.style.display = "block";
+                    }
+                </script>
+
+                <?php
 
                 //timeframe
                 $dateTimeNow = date("Y-m-d H:i:s");
@@ -166,7 +189,7 @@ class Post {
                     }
                 }
 
-                $str .= "<div class='status_post'>
+                $str .= "<div class='status_post' onClick='javascript:toggle$id()'>
                             <div class='post_profile_pic'>
                                 <img src='$profilePic' width='50px' />
                             </div>
@@ -181,7 +204,10 @@ class Post {
                             </div>
 
                         </div>
-                        <hr />";
+                        <div class='post_comment' id='toggle_comment$id' style='display: none;'>
+                            <iframe src='comment_frame.php?post_id=$id' id='comment_iframe' frameborder='0'></iframe>
+                        </div>
+                        <hr />";            
                         
             }
 
