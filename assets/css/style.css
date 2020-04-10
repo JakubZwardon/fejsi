@@ -140,3 +140,20 @@ textarea:focus {
     padding: 5px 4px 4px 5px;
     background-color: #38af9d;
 }
+
+.status_post {
+    width: 96%;
+    font-size: 1rem;
+    padding: 0 5px;
+    /* border-left-style: solid; */
+    min-height: 75px;
+}
+
+.post_profile_pic {
+    float: left;
+    margin-right: 7px;
+}
+
+.post_profile_pic img {
+    border-radius: 5px;
+}
