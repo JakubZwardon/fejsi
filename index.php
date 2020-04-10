@@ -37,14 +37,63 @@ if(isset($_POST['post'])) {
 		<hr>		
 	</form>
 
-	<?php 
-	
-	$post = new Post($con, $userLoggedIn);
-	$post->loadPostsFriends();
-	
-	?>
+	<div class="posts_area"></div>
+	<img id="loading" style="height: 40px" src="assets/images/icons/loading.gif" />
 
 </div>
+
+<script>
+
+let userLoggedIn = '<?php echo $userLoggedIn?>';
+
+$(document).ready(function() {
+	
+	$('#loading').show();
+
+	//Original Ajax request for loading first posts
+	$.ajax({
+		url: "includes/handlers/ajax_load_posts.php", 
+		type: "POST",
+		data: "page=1&userLoggedIn=" + userLoggedIn,
+		cache: false,
+
+		success: function(data) {
+			$('#loading').hide();
+			$('.posts_area').html(data);			
+		}
+	});
+
+	$(window).scroll(function() {
+		let height = $('.posts_area').height();	//div contain posts
+		let scrollTop = $(this).scrollTop();
+		let page = $('.posts_area').find('.next_page').val();	//get the val og 'page' send from 'Post class- loadPostsFriends method'
+		let noMorePosts = $('.posts_area').find('.no_more_posts').val();	//get the val og 'noMorePosts' send from 'Post class- loadPostsFriends method'
+
+		if((document.body.scrollHeight == document.body.scrollTop + window.innerHeight) && (noMorePosts == 'false')) {
+			$('#loading').show();
+
+			let ajaxReq = $.ajax({
+				url: "includes/handlers/ajax_load_posts.php",
+				type: "POST",
+				data: "page=" + page + "&userLoggedIn=" + userLoggedIn,
+				cache: false,
+
+				success: function(response) {
+					$('.posts_area').find('.next_page').remove();	//removes current next page
+					$('.posts_area').find('.no_more_posts').remove();
+
+					$('#loading').hide();
+					$('.posts_area').append(response);					
+				}
+			});
+		}	//end if
+
+		return false;
+	});		//end $(window).scroll(function()
+
+});
+
+</script>
 
 <!-- closing div from header file -->
 </div>
