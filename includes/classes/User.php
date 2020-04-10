@@ -41,4 +41,14 @@ class User {
             return false;
         }
     }
+
+    public function isFriend($usernameToChceck) {
+        $usernameComma = "," . $usernameToChceck . ",";
+        //check if $usernameToChceck is in friend array or is the same as logged in user
+        if((strstr($this->user['friend_array'], $usernameComma)) || ($usernameToChceck == $this->user['username'])) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
