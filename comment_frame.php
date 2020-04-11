@@ -20,7 +20,7 @@
 <head>
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
-    <style>
+    <style type="text/css">
         * {
             font-size: small;
             font-family: Arial, Helvetica, sans-serif;
