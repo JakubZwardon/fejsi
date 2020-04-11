@@ -13,6 +13,11 @@ body {
     background-color: #e6eae8;
 }
 
+a {
+    color: #39c8ba;
+    text-decoration: none;
+}
+
 .top_bar {
     width: 100%;
     min-width: 1050px;
@@ -147,6 +152,12 @@ textarea:focus {
     padding: 0 5px;
     /* border-left-style: solid; */
     min-height: 75px;
+    cursor: pointer;
+}
+
+.status_post:hover {
+    /* border-left-style: solid; */
+    border-left: solid 6px #39c8b2;
 }
 
 .post_profile_pic {
@@ -156,4 +167,53 @@ textarea:focus {
 
 .post_profile_pic img {
     border-radius: 5px;
+}
+
+#comment_iframe {
+    max-height: 250px;
+    width: 100%;
+    border: 0;
+    margin-top: 5px;
+}
+
+.comment_section {
+    padding: 0 5px 5px 5px;
+}
+
+.comment_section img{
+    float: left;
+    margin: 0 3px 3px 3px;
+    border-radius: 3px;
+    height: 30px;
+}
+
+#comment_form textarea {
+    border-color: #d3d3d3;
+    width: 85%;
+    height: 40px;
+    border-radius: 5px;
+    color: #616060;
+    font-size: 14px;
+    margin: 3px 3px 3px 5px;
+    padding: 9px 5px;
+}
+
+#comment_form input[type="submit"] {
+    border: none;
+    background-color: #39c8ba;
+    color: #4a6eb3;
+    border-radius: 5px;
+    width: 13%;
+    height: 40px;
+    margin-top: 3px;
+    position: absolute;
+    font-family: 'Bellota-BoldItalic', sans-serif;
+    text-shadow: #bfe8ea 0.5px 0.5px 0px;
+}
+
+.newsfeedPostOptions {
+    padding: 0;
+    text-decoration: none;
+    color: #39c8cd;;
+    border: none;
 }
