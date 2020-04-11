@@ -1,10 +1,27 @@
-//Support of 'like' mechanism for a given post
+<!-- Support of 'like' mechanism for a given post -->
 
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+    <style type="text/css">
+        * {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        body {
+            background-color: #fff;
+        }
+
+        form {
+            position: absolute;
+            top: 0;
+        }
+        
+    </style>
 </head>
 <body>
+
+
 <?php
 
 require 'config/config.php';
