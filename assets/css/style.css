@@ -248,7 +248,7 @@ textarea:focus {
     height: 100%;
     float: left;
     position: relative;
-    background-color: #76b7b0;
+    background-color: #0b423d;
     border-right: 10px solid #98dbd4;
     color: #cbeaf8;
     margin-right: 20px;
@@ -272,4 +272,37 @@ textarea:focus {
 .profile_info p {
     margin: 0 0 0 20px;
     word-wrap: break-word;
+}
+
+.danger {
+    background-color: #e74c3c;
+}
+
+.warning {
+    background-color: #f0ad4e;
+}
+
+.default {
+    background-color: #bdc3c7;
+}
+
+.success {
+    background-color: #2ecc71;
+}
+
+.info {
+    background-color: #3498db;
+}
+
+.deep_blue {
+    background-color: #0043f0;
+}
+
+.profile_left input[type="submit"] {
+    width: 90%;
+    height: 35px;
+    border-radius: 5px;
+    border: navajowhite;
+    color: #fff;
+    margin: 10px 0 0 10px;
 }
