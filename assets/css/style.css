@@ -278,24 +278,48 @@ textarea:focus {
     background-color: #e74c3c;
 }
 
+.danger:active {
+    background-color: #c93a2a;
+}
+
 .warning {
     background-color: #f0ad4e;
+}
+
+.warning:active {
+    background-color: #db932d;
 }
 
 .default {
     background-color: #bdc3c7;
 }
 
+.default:active {
+    background-color: #9ea8af;
+}
+
 .success {
     background-color: #2ecc71;
+}
+
+.success:active {
+    background-color: #1ac260;
 }
 
 .info {
     background-color: #3498db;
 }
 
+.info:active {
+    background-color: #2582c0;
+}
+
 .deep_blue {
     background-color: #0043f0;
+}
+
+.deep_blue:active {
+    background-color: #1242bb;
 }
 
 .profile_left input[type="submit"] {
@@ -305,4 +329,32 @@ textarea:focus {
     border: navajowhite;
     color: #fff;
     margin: 10px 0 0 10px;
+}
+
+#accept_button {
+    width: 15%;
+    height: 30px;
+    border-radius: 5px;
+    margin: 7px;
+    border: none;
+    color: #fff;
+    background-color: #2ecc71;
+}
+
+#accept_button:active {
+    background-color: #1ac260;
+}
+
+#ignore_button {
+    width: 15%;
+    height: 30px;
+    border-radius: 5px;
+    margin: 7px;
+    border: none;
+    color: #fff;
+    background-color: #e74c3c;
+}
+
+#ignore_button:active {
+    background-color: #c93a2a;
 }
