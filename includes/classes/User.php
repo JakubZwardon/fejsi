@@ -58,4 +58,51 @@ class User {
             return false;
         }
     }
+
+    //is there friend requests?
+    public function didReceiveRequest($userFrom) {
+        $userTo = $this->user['username'];
+        $check_request_query = mysqli_query($this->con, "SELECT * FROM friend_requests WHERE user_to='$userTo' AND user_from='$userFrom'");
+
+        if(mysqli_num_rows($check_request_query) > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    //is there friend requests?
+    public function didSendRequest($userTo) {
+        $userFrom = $this->user['username'];
+        $check_request_query = mysqli_query($this->con, "SELECT * FROM friend_requests WHERE user_to='$userTo' AND user_from='$userFrom'");
+
+        if(mysqli_num_rows($check_request_query) > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function removeFriend($userToRemove) {
+        $loggedInUser = $this->user['username'];
+
+        $query = mysqli_query($this->con, "SELECT friend_array FROM users WHERE username='$userToRemove'");
+        $row = mysqli_fetch_array($query);
+        $friendArrayUsername = $row['friend_array'];    //friend array of user to remove from friends
+
+        //delete user from logged in user friend array
+        $newFriendArray = str_replace($userToRemove . ",", "", $this->user['friend_array']);
+        $removeFriend = mysqli_query($this->con, "UPDATE users SET friend_array='$newFriendArray' WHERE username='$loggedInUser'");
+
+        //delete logged in user from userToRemove friend array
+        $newFriendArray = str_replace($this->user['username'] . ",", "", $friendArrayUsername);
+        $removeFriend = mysqli_query($this->con, "UPDATE users SET friend_array='$newFriendArray' WHERE username='$userToRemove'");
+
+    }
+
+    public function sendRequest($userTo) {
+        $loggedInUser = $this->user['username'];
+
+        $query = mysqli_query($this->con, "INSERT INTO friend_requests VALUES(NULL, '$userTo', '$loggedInUser')");
+    }
 }
