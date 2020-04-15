@@ -111,6 +111,13 @@ class Post {
                     $count++;
                 }
 
+                //Only owner of post may delete it
+                if($userLoggedIn == $addedBy) {
+                    $deleteButton = "<button class='delete_button btn-danger' id='post$id'>X</button>";
+                } else {
+                    $deleteButton = "";
+                }
+
                 $user_details_query = mysqli_query($this->con, "SELECT first_name, last_name, profile_pic FROM users WHERE username='$addedBy'");
                 $user_row = mysqli_fetch_array($user_details_query);
                 $firstName = $user_row['first_name'];
@@ -203,6 +210,7 @@ class Post {
 
                             <div class='posted_by' style='color:#acacac;'>
                                 <a href='$addedBy'>$firstName $lastName </a> $userTo &nbsp;&nbsp;&nbsp;&nbsp;$timeMessage
+                                $deleteButton
                             </div>
 
                             <div id='post_body'>
@@ -221,8 +229,23 @@ class Post {
                         <div class='post_comment' id='toggle_comment$id' style='display: none;'>
                             <iframe src='comment_frame.php?post_id=$id' id='comment_iframe'></iframe>
                         </div>
-                        <hr />";            
-                        
+                        <hr />";                              
+                ?>
+
+                <script>
+                    //When click on post delete_button
+                    $(document).ready(function() {
+                        $('#post<?php echo $id; ?>').click(function() {                            
+                            bootbox.confirm("Are you sure you want to delete this post?", function(result) {                                                            
+                                // $.post("includes/form_handlers/delete_post.php", {result:result, post_id: <?php echo $id; ?>}).done(function() {if(result) location.reload();});
+                                // $.post("includes/form_handlers/delete_post.php", {result:result, post_id: <?php echo $id; ?>}, function() {if(result) location.reload();});
+                                $.post("includes/form_handlers/delete_post.php?post_id= <?php echo $id; ?>", {result:result}, function() {if(result) location.reload();});                                
+                            });
+                        });
+                    });                    
+                </script>
+
+                <?php                        
             }
 
             if($count > $limit) {
