@@ -18,15 +18,16 @@ if (isset($_SESSION['username'])) {
 <head>
 	<title>Welcome to Fejsi</title>
 
-	<!-- Javascript -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-	<script src="assets/js/bootstrap.js"></script>
-	<script src="assets/js/fejsi.js"></script>
-
 	<!-- CSS -->
 	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+	<!-- Javascript -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="assets/js/bootstrap.js"></script>
+	<script src="assets/js/bootbox.min.js"></script>
+	<script src="assets/js/fejsi.js"></script>
 </head>
 
 <body>
