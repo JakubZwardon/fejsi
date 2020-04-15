@@ -80,7 +80,7 @@ class Post {
                 if($row['user_to'] == "none") {
                     $userTo = "";
                 } else {
-                    $userToObj = new User($con, $row['user_to']);
+                    $userToObj = new User($this->con, $row['user_to']);
                     $userToName = $userToObj->getFirstAndLastName();
                     $userTo = "to <a href='" . $row['user_to'] . "'>" . $userToName . "</a>";
                 }
