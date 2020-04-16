@@ -368,3 +368,10 @@ textarea:focus {
     position: relative;
     right: -15px;
 }
+
+.profile_main_column {
+    min-width: 675px;
+    float: left;
+    width: 75%;
+    z-index: -1;
+}
