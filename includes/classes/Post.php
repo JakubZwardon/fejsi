@@ -29,7 +29,7 @@ class Post {
             }
 
             //Insert post
-            $query = mysqli_query($this->con, "INSERT INTO posts VALUES(NULL, '$body', '$addedBy', '$userTo', '$dateAdded', 'no', 'no', 0)");
+            $query = mysqli_query($this->con, "INSERT INTO posts VALUES(NULL, '$body', '$addedBy', '$userTo', '$dateAdded', 'no', 'no', 0, 'no')");
             $returnedId = mysqli_insert_id($this->con);
             if (mysqli_error($this->con)) {
                 echo mysqli_error($this->con); //print error when somethings go wrong
