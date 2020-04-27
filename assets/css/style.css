@@ -500,3 +500,35 @@ textarea:focus {
 .nav-link:hover {
     color: #39c8ba;
 }
+
+.dropdown_data_window {
+	background-color: #fff;
+	/* border: 1px solid #f0e7e7; */
+	border-radius: 0 0 8px 8px;
+	border-top: none;
+	width: 400px;
+	position: absolute;
+	right: 10px;
+	top: 40px;
+	overflow-y: scroll;
+}
+
+nav a {
+    outline: none;
+}
+
+.notification_badge {
+	padding: 3px 7px;
+	font-size: small;
+	font-weight: bold;
+	line-height: 1;
+	color: #fff;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: baseline;
+	background-color: #f00;
+	border-radius: 10px;
+	position: absolute;
+	left: 11px;
+	top: -3px;
+}
