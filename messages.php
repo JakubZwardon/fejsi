@@ -1,7 +1,5 @@
 <?php
 include("includes/header.php");
-include("includes/classes/User.php");
-include("includes/classes/Message.php");
 
 $messageObj = new Message($con, $userLoggedIn);
 
