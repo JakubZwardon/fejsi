@@ -112,10 +112,10 @@ if (isset($_SESSION['username'])) {
 					cache: false,
 
 					success: function(response) {
+						$('.dropdown_data_window').append(response);			
+						
 						$('.dropdown_data_window').find('.nextPageDropdownData').remove();	//removes current next page
 						$('.dropdown_data_window').find('.noMoreDropdownData').remove();
-					
-						$('.dropdown_data_window').append(response);					
 					}
 				});
 			}	//end if
