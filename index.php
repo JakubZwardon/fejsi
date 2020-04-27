@@ -1,7 +1,5 @@
 <?php
 include("includes/header.php");
-include("includes/classes/User.php");
-include("includes/classes/Post.php");
 
 if(isset($_POST['post'])) {
 	$post = new Post($con, $userLoggedIn);
@@ -44,9 +42,8 @@ if(isset($_POST['post'])) {
 
 <script>
 
-let userLoggedIn = '<?php echo $userLoggedIn?>';
-
 $(document).ready(function() {
+	let userLoggedIn = '<?php echo $userLoggedIn?>';
 	
 	$('#loading').show();
 
