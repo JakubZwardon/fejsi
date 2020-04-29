@@ -3,6 +3,7 @@
     require 'config/config.php';
     include("includes/classes/User.php");
     include("includes/classes/Post.php");
+    include("includes/classes/Notification.php");
 
     //Redirect not logged user
     if (isset($_SESSION['username'])) {
@@ -58,6 +59,7 @@
     $row = mysqli_fetch_array($user_query);
 
     $postedTo = $row['added_by'];
+    $userTo = $row['user_to'];
 
     //prepare comment and put it to database
     if(isset($_POST['post_comment' . $postId])) {
@@ -66,6 +68,28 @@
         $dateTimeNow = date("Y-m-d H:i:s");
 
         $insert_post = mysqli_query($con, "INSERT INTO comments VALUES(NULL, '$postBody', '$userLoggedIn', '$postedTo', '$dateTimeNow', 'no', '$postId')");
+
+        if($postedTo != $userLoggedIn) {
+            $notification = new Notification($con, $userLoggedIn);
+            $notification->insertNotification($postId, $postedTo, 'comment');
+        } 
+        
+        if(($userTo != 'none') && ($userTo != $userLoggedIn)) {
+            $notification = new Notification($con, $userLoggedIn);
+            $notification->insertNotification($postId, $userTo, 'profile_comment');
+        }
+
+        $getComenters = mysqli_query($con, "SELECT * FROM comments WHERE post_id='$postId'");
+        $notifiedUsers = array();
+        while($row = mysqli_fetch_array($getComenters)) {
+            if($row['posted_by'] != $postedTo && $row['posted_by'] != $userTo && $row['posted_by'] != $userLoggedIn && !in_array($row['posted_by'], $notifiedUsers)) {
+                $notification = new Notification($con, $userLoggedIn);
+                $notification->insertNotification($postId, $row['posted_by'], 'comment_non_owner');
+
+                array_push($notifiedUsers, $row['posted_by']);
+            }
+        }
+
         echo "<p>Comment Posted! </p>";
     }
 
