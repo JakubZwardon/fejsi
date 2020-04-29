@@ -27,6 +27,7 @@
 require 'config/config.php';
 include("includes/classes/User.php");
 include("includes/classes/Post.php");
+include("includes/classes/Notification.php");
 
 //Redirect not logged user
 if (isset($_SESSION['username'])) {
@@ -69,6 +70,10 @@ if(isset($_POST['like_button'])) {
     $insert_user = mysqli_query($con, "INSERT INTO likes VALUES (NULL, '$userLoggedIn', '$postId')");
 
     //Insert notification
+    if($userLiked != $userLoggedIn) {
+        $notification = new Notification($con, $userLoggedIn);
+        $notification->insertNotification($postId, $userLiked, 'like');
+    }
 }
 
 //Unlike button operation
