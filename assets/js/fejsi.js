@@ -33,10 +33,11 @@ function getDropdownData(user, type) {
         let pageName;
 
         if(type == 'notification') {
-
+            pageName = "ajax_load_notifications.php";
+            $("span").remove("#unread_notifications");
         } else if(type == 'message') {
             pageName = "ajax_load_messages.php";
-            $("span").remove("#unread_message");
+            $("span").remove("#unread_messages");
         }
 
         let ajaxreq = $.ajax({
