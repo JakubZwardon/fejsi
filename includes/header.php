@@ -44,6 +44,23 @@ if (isset($_SESSION['username'])) {
 		<div class="logo">
 			<a href="index.php">Fejsi!</a>
 		</div>
+		
+		<div class="search">
+			<form action="search.php" method="GET" name="search_form">
+				<input type="text" name="q" placeholder="Search..." autocomplete="off" id="search_text_input" onkeyup="getLiveSearchUsers(this.value, '<?php echo $userLoggedIn; ?>')">
+
+				<div class="button_holder">
+					<img src="assets/images/icons/search.png">
+				</div>
+			</form>
+
+				<div class="search_results">
+				</div>
+
+				<div class="search_results_footer_empty">
+				</div>
+			
+		</div>
 
 		<nav>
 			<?php
