@@ -133,4 +133,10 @@ class User {
         }
         return $mutualFriends;
     }
+
+    public function getNumberOfFriendRequests() {
+        $userLoggedIn = $this->user['username'];
+        $query = mysqli_query($this->con, "SELECT * FROM friend_requests WHERE user_to='$userLoggedIn'");
+        return mysqli_num_rows($query);
+    }
 }
