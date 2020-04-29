@@ -532,3 +532,21 @@ nav a {
 	left: 11px;
 	top: -3px;
 }
+
+.resultDisplayNotifications {
+	height: auto;
+    color: #1485bd;
+    padding: 7px 7px 16px 6px;
+}
+
+.resultDisplayNotifications img {
+	height: 40px;
+	border-radius: 5px;
+	margin: 1px 12px 0px 2px;
+	float: left;
+}
+
+.timestamp_smaller {
+    font-size: 85%;
+    margin: 0;
+}
