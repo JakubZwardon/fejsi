@@ -2,6 +2,7 @@
 require '../../config/config.php';
 include("../classes/User.php");
 include("../classes/Post.php");
+include("../classes/Notification.php");
 
 //if is set something in post_modal then submit post
 if(isset($_POST['post_body'])) {
