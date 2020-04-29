@@ -4,6 +4,7 @@ require 'config/config.php';
 include("classes/User.php");
 include("classes/Post.php");
 include("classes/Message.php");
+include("classes/Notification.php");
 
 //Redirect not logged user
 if (isset($_SESSION['username'])) {
@@ -46,8 +47,17 @@ if (isset($_SESSION['username'])) {
 
 		<nav>
 			<?php
+				//Unread messages
 				$message = new Message($con, $userLoggedIn);
 				$numMessages = $message->getUnreadNumber();
+
+				//Unread notifications
+				$notification = new Notification($con, $userLoggedIn);
+				$numNotifications = $notification->getUnreadNumber();
+
+				//Friend requests
+				$userObj = new User($con, $userLoggedIn);
+				$numRequests = $userObj->getNumberOfFriendRequests();
 			?>
 			<a href="<?php echo $userLoggedIn ?>">
 				<?php echo $user['first_name']; ?>
@@ -59,14 +69,22 @@ if (isset($_SESSION['username'])) {
 				<i class="fa fa-envelope fa-lg"></i>
 				<?php
 					if($numMessages > 0)
-						echo '<span class="notification_badge" id="unread_message">' . $numMessages . '</span>';
+						echo '<span class="notification_badge" id="unread_messages">' . $numMessages . '</span>';
 				?>
 			</a>
-			<a href="#">
+			<a href="javascript:void(0);" onclick="getDropdownData('<?php echo $userLoggedIn; ?>', 'notification')">
 				<i class="fa fa-bell-o fa-lg"></i>
+				<?php
+					if($numNotifications > 0)
+						echo '<span class="notification_badge" id="unread_notifications">' . $numNotifications . '</span>';
+				?>
 			</a>
 			<a href="requests.php">
 				<i class="fa fa-users fa-lg"></i>
+				<?php
+					if($numRequests > 0)
+						echo '<span class="notification_badge" id="unread_requests">' . $numRequests . '</span>';
+				?>
 			</a>
 			<a href="#">
 				<i class="fa fa-cog fa-lg"></i>
@@ -84,12 +102,10 @@ if (isset($_SESSION['username'])) {
 	<script>
 
 	$(document).ready(function() {
-		debugger;
 
 		let userLoggedIn = '<?php echo $userLoggedIn?>';
 
 		$('.dropdown_data_window').scroll(function() {
-			debugger;
 			let innerHeight = $('.dropdown_data_window').innerHeight();
 			let scrollTop = $('.dropdown_data_window').scrollTop();
 			let page = $('.dropdown_data_window').find('.nextPageDropdownData').val();	//get the val og 'page' send from 'Post class- loadPostsFriends method'
