@@ -82,6 +82,7 @@ nav a:hover {
     border-radius: 5px;    
     box-shadow: 2px 2px 1px #d3d3d3;    
     z-index: -1;
+    color: #555;
 }
 
 .user_details {
@@ -614,12 +615,13 @@ nav a {
     float: right;
 }
 
-.searchPageFriendButtons input[type='sumbit'] {
+.searchPageFriendButtons input[type="submit"] {
     border: none;
     padding: 9px 12px;
     border-radius: 5px;
     color: #fff;
 }
+
 .result_profile_pic {
 	float: left;
 	margin-right: 10px;
@@ -627,4 +629,28 @@ nav a {
 
 #search_hr {
     margin-bottom: 0px;
+}
+
+#small_profile_pic {
+	height: 70px;
+	margin: 1px 12px 0 2px;
+	float: left;
+}
+
+#settings_input {
+	border: 1px solid #ccc;
+	/* padding: 20px; */
+	height: 25px;
+	padding: 5px 6px;
+	margin-bottom: 10px;
+	border-radius: 5px;
+	font-size: medium;
+	line-height: 20px;
+}
+
+.settings_submit {
+    border: none;
+    padding: 9px 12px;
+    border-radius: 5px;
+    color: #fff;
 }
