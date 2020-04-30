@@ -90,7 +90,7 @@ if (isset($_SESSION['username'])) {
 				?>
 			</a>
 			<a href="javascript:void(0);" onclick="getDropdownData('<?php echo $userLoggedIn; ?>', 'notification')">
-				<i class="fa fa-bell-o fa-lg"></i>
+				<i class="fa fa-bell fa-lg"></i>
 				<?php
 					if($numNotifications > 0)
 						echo '<span class="notification_badge" id="unread_notifications">' . $numNotifications . '</span>';
@@ -103,8 +103,9 @@ if (isset($_SESSION['username'])) {
 						echo '<span class="notification_badge" id="unread_requests">' . $numRequests . '</span>';
 				?>
 			</a>
-			<a href="#">
+			<a href="settings.php">
 				<i class="fa fa-cog fa-lg"></i>
+
 			</a>
 			<a href="includes/handlers/logout.php">
 				<i class="fa fa-sign-out fa-lg"></i>
