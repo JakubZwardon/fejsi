@@ -14,7 +14,7 @@ $(document).ready(function() {
     $('#search_text_input').focusout(function() {
         if(window.matchMedia("(min-width: 800px)").matches) {
             $(this).animate({width: searchTextInputFoldWidth}, 500);
-            $('#search_text_input').val("");
+            //$('#search_text_input').val("");
         }
     });
 
