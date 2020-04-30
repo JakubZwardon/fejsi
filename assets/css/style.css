@@ -609,3 +609,22 @@ nav a {
 .search_results_footer a {
     color: #fff;
 }
+
+.searchPageFriendButtons {
+    float: right;
+}
+
+.searchPageFriendButtons input[type='sumbit'] {
+    border: none;
+    padding: 9px 12px;
+    border-radius: 5px;
+    color: #fff;
+}
+.result_profile_pic {
+	float: left;
+	margin-right: 10px;
+}
+
+#search_hr {
+    margin-bottom: 0px;
+}
