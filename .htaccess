@@ -1,3 +1,3 @@
 RewriteEngine On
-RewriteRule ^([ąĄćĆęĘłŁóÓżŻźŹa-zA-Z0-9_-]+)$ profile.php?profile_username=$1
-RewriteRule ^([ąĄćĆęĘłŁóÓżŻźŹa-zA-Z0-9_-]+)/$ profile.php?profile_username=$1
+RewriteRule ^([ąĄćĆęĘłŁóÓśŚżŻźŹa-zA-Z0-9_-]+)$ profile.php?profile_username=$1
+RewriteRule ^([ąĄćĆęĘłŁóÓśŚżŻźŹa-zA-Z0-9_-]+)/$ profile.php?profile_username=$1
