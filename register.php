@@ -43,12 +43,12 @@ require 'includes/form_handlers/login_handler.php';
 			<div id="first">
 				<!-- login form  -->
 				<form action="register.php" method="post">
-					<input type="email" name="log_email" placeholder="e-mail address" required value="<?php 
+					<input type="email" name="log_email" placeholder="e-mail address" required autocomplete="off" value="<?php 
 					if (isset($_SESSION['log_email'])) {
 						echo $_SESSION['log_email'];
 					}?>"/>
 					<br />
-					<input type="password" name="log_password" placeholder="password" required/>
+					<input type="password" name="log_password" placeholder="password" autocomplete="off" required/>
 					<br />
 					<input type="submit" name="login_button" value="Login"/>
 					<br />				
@@ -63,7 +63,7 @@ require 'includes/form_handlers/login_handler.php';
 				<!-- register form -->
 				<form action="register.php" method="post">
 					<!-- 	input for first name -->
-					<input type="text" name="reg_fname" placeholder="First Name" required value="<?php 
+					<input type="text" name="reg_fname" placeholder="First Name" required autocomplete="off" value="<?php 
 					if (isset($_SESSION['reg_fname'])) {
 						echo $_SESSION['reg_fname'];
 					}?>"/>
@@ -73,7 +73,7 @@ require 'includes/form_handlers/login_handler.php';
 					
 
 					<!-- input for the last name -->
-					<input type="text" name="reg_lname" placeholder="Last Name" required value="<?php 
+					<input type="text" name="reg_lname" placeholder="Last Name" required autocomplete="off" value="<?php 
 					if (isset($_SESSION['reg_lname'])) {
 						echo $_SESSION['reg_lname'];
 					}?>"/>
@@ -83,7 +83,7 @@ require 'includes/form_handlers/login_handler.php';
 					
 					
 					<!-- 		input for e-mail -->
-					<input type="email" name="reg_email" placeholder="e-mail" required value="<?php 
+					<input type="email" name="reg_email" placeholder="e-mail" required autocomplete="off" value="<?php 
 					if (isset($_SESSION['reg_email'])) {
 						echo $_SESSION['reg_email'];
 					}?>"/>
@@ -91,7 +91,7 @@ require 'includes/form_handlers/login_handler.php';
 
 					
 					<!-- 		input for e-mail confirm -->
-					<input type="email" name="reg_email2" placeholder="Confirm e-mail" required value="<?php 
+					<input type="email" name="reg_email2" placeholder="Confirm e-mail" required autocomplete="off" value="<?php 
 					if (isset($_SESSION['reg_email2'])) {
 						echo $_SESSION['reg_email2'];
 					}?>"/>
@@ -103,9 +103,9 @@ require 'includes/form_handlers/login_handler.php';
 					
 					
 					<!-- 		input for password -->
-					<input type="password" name="reg_password" placeholder="password" required />
+					<input type="password" name="reg_password" placeholder="password" required autocomplete="off" />
 					<br />
-					<input type="password" name="reg_password2" placeholder="Confirm password" required />
+					<input type="password" name="reg_password2" placeholder="Confirm password" required autocomplete="off" />
 					<br />
 					<!-- 		displaying error message -->
 					<?php if (in_array("Your password must be between 5 and 30 characters<br />", $error_arrar)) echo "Your password must be between 5 and 30 characters<br />";
@@ -113,7 +113,7 @@ require 'includes/form_handlers/login_handler.php';
 					elseif (in_array("Your passwords do not match<br />", $error_arrar)) echo "Your passwords do not match<br />";?>
 					
 					
-					<input type="submit" name="register_button" value="Register"/>
+					<input type="submit" name="register_button" value="Register" autocomplete="off"/>
 					<br />
 					
 					<!-- 		displaying success message to the user -->
