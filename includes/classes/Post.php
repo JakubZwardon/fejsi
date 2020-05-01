@@ -19,6 +19,19 @@ class Post {
 
         //check is empty post
         if($checkEmpty != '') {
+
+            $bodyArray = preg_split("/\s+/", $body);
+            foreach($bodyArray as $key => $value) {
+                if(strpos($value, "www.youtube.com/watch?v=") !== false) {
+
+                    $link = preg_split("!&!", $value);
+                    $value = preg_replace("!watch\?v=!", "embed/", $link[0]);
+                    $value = "<br><iframe width=\'420\' height=\'315\' src=\'" . $value . "\'></iframe><br>";
+                    $bodyArray[$key] = $value;
+                }
+            }
+            $body = implode(" ", $bodyArray);
+
             //Current date and time
             $dateAdded = date("Y-m-d H:i:s");
             $addedBy = $this->userObj->getUserName();
@@ -48,11 +61,45 @@ class Post {
             if (mysqli_error($this->con)) {
                 echo mysqli_error($this->con); //print error when somethings go wrong
             }
+            
+            //list of words for which we do not count trends
+            $stopWords = "a co coś czymś i jakoś kimś o po pod przed w za";
 
+            $stopWords = preg_split("/[\s,]+/", $stopWords);
 
+            $noPunctuation = str_replace('<br />', ' ', $body);
+            $noPunctuation = preg_replace("/[^ąĄćĆęĘłŁóÓśŚżŻźŹa-zA-Z 0-9]+/", "", $noPunctuation);
 
+            if((strpos($noPunctuation, "height") === false) && (strpos($noPunctuation, "width") === false) && (strpos($noPunctuation, "http") === false)) {
+                $noPunctuation = preg_split("/[\s,]+/", $noPunctuation);
 
+                foreach($stopWords as $value) {
+                    foreach($noPunctuation as $key => $value2) {
+                        if(strtolower($value) == strtolower($value2)) {
+                            $noPunctuation[$key] = "";
+                        }
+                    }
+                }
+
+                foreach($noPunctuation as $value) {
+                    $this->calculateTrend(ucfirst($value));
+                }
+            }
         }
+    }
+
+    public function calculateTrend($term) {
+        if($term != "") {
+            $query = mysqli_query($this->con, "SELECT * FROM trends WHERE title='$term'");
+
+            if(mysqli_num_rows($query) == 0) {
+                $insert_query = mysqli_query($this->con, "INSERT INTO trends(title, hits) VALUES('$term', '1')");
+            } else {
+                $insert_query = mysqli_query($this->con, "UPDATE trends SET hits=hits+1 WHERE title='$term'");
+            }
+        }
+
+        
     }
 
     public function loadPostsFriends($data, $limit) {
