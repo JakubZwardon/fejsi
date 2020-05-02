@@ -9,7 +9,7 @@ class Post {
         $this->userObj = new User($con, $username);
     }
 
-    public function submitPost($body, $userTo) {
+    public function submitPost($body, $userTo, $imageName) {
         $body = strip_tags($body); //remove html tags
         $body = mysqli_real_escape_string($this->con, $body);
 
@@ -42,7 +42,7 @@ class Post {
             }
 
             //Insert post
-            $query = mysqli_query($this->con, "INSERT INTO posts VALUES(NULL, '$body', '$addedBy', '$userTo', '$dateAdded', 'no', 'no', 0, 'no')");
+            $query = mysqli_query($this->con, "INSERT INTO posts VALUES(NULL, '$body', '$addedBy', '$userTo', '$dateAdded', 'no', 'no', 0, '$imageName')");
             $returnedId = mysqli_insert_id($this->con);
             if (mysqli_error($this->con)) {
                 echo mysqli_error($this->con); //print error when somethings go wrong
@@ -126,6 +126,7 @@ class Post {
                 $body = $row['body'];
                 $addedBy = $row['added_by'];
                 $dateTime = $row['date_added'];
+                $imagePath = $row['image'];
 
                 //prepare 'userTo' string so it can be included even if not posted to a user
                 if($row['user_to'] == "none") {
@@ -254,6 +255,14 @@ class Post {
                     }
                 }
 
+                if($imagePath != "") {
+                    $imageDiv = "<div class='postedImage'>
+                                    <img src='$imagePath'>
+                                </div>";
+                } else {
+                    $imageDiv = "";
+                }
+
                 $str .= "<div class='status_post' onClick='javascript:toggle$id()'>
                             <div class='post_profile_pic'>
                                 <img src='$profilePic' width='50px' />
@@ -267,6 +276,7 @@ class Post {
                             <div id='post_body'>
                                 $body
                                 <br />
+                                $imageDiv
                                 <br />
                                 <br />
                             </div>
