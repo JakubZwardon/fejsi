@@ -63,7 +63,7 @@ class Post {
             }
             
             //list of words for which we do not count trends
-            $stopWords = "a co coś czymś i jakoś kimś o po pod przed w za";
+            $stopWords = "a ale będzie co coś czymś i jakoś jeszcze kiedyś kimś na niż o po pod przed tu w za";
 
             $stopWords = preg_split("/[\s,]+/", $stopWords);
 
