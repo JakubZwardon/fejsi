@@ -29,6 +29,8 @@ if(isset($_FILES['image']['name'])){
 		$type = $ImageType[1]; //file type	
 	//Set Upload directory    
 		$uploaddir = $_SERVER['DOCUMENT_ROOT'].'/fejsi/assets/images/profile_pics';
+		// Version for hosting on server 
+		// $uploaddir = $_SERVER['DOCUMENT_ROOT'].'/assets/images/profile_pics';
 	//Set File name	
 		$file_temp_name = $profile_id.'_original.'.md5(time()).'n'.$type; //the temp file name
 		$fullpath = $uploaddir."/".$file_temp_name; // the temp file path
